@@ -1,20 +1,34 @@
 body {
     background-color: #2F263C;
     color: #ffcf5f;
-    font-size: 24px;
+    font-size: 22px;
     font-family: 'Roboto Condensed', sans-serif;
-}
-
-.titles {
-    font-family: 'Acme', sans-serif;
-}
-
-h1, h2, h3 {
-    font-family: 'Acme', sans-serif;
 }
 
 header {
     background-color: #ff3c3c;
+}
+
+footer {
+    background-color: #201b29;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+
+main {
+    margin: 3%;
+    color: white;
+}
+
+.titles {
+    font-family: 'Acme', sans-serif;
+    color: #ffcf5f;
+}
+
+h1, h2, h3 {
+    font-family: 'Acme', sans-serif;
+    color: #ffcf5f;
 }
 
 .div-flex {
@@ -26,7 +40,7 @@ header {
 /**** Navbar ****/
 
 nav {
-    height: 8rem;
+    height: 6rem;
     display: flex;
     text-decoration: none;
 }
@@ -34,7 +48,8 @@ nav {
 .navTitle {
     margin-left: 20px;
     font-weight: bold;
-    font-size: 30px
+    font-size: 30px;
+    cursor: pointer;
 }
 
 .navList {
@@ -52,16 +67,16 @@ nav {
     color: inherit;
 }
 
+.navList li a :hover {
+    text-decoration: underline;
+}
+
 /**** Footer ****/
 
 .footerBar {
     display: flex;
-    width: 100%;
     align-items: center;
-    bottom: 0;
-    position: absolute;
-    background-color: #201b29;
-    flex-direction: column;
+    justify-content: center;
 }
 
 .footerBar p {

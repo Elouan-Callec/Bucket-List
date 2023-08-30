@@ -1,8 +1,8 @@
 {% block navbar %}
     <nav>
         <div class="div-flex titles">
-            <img src="{{ asset('assets/images/logo.svg') }}" width="6%" alt="bucket-list logo">
-            <p class="navTitle">Bucket-List</p>
+            <img src="{{ asset('assets/images/logo.svg') }}" style="width: 6%; cursor: pointer" alt="bucket-list logo" onclick="window.location.href = '{{ path('main_main') }}'">
+            <p class="navTitle" onclick="window.location.href = '{{ path('main_main') }}'">Bucket-List</p>
             <ul style="" class="navList">
                 <li><a href="{{ path('main_main') }}">Home</a></li>
                 <li><a href="{{ path('main_about_us') }}">About Us</a></li>
