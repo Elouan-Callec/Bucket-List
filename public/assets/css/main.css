@@ -2,9 +2,14 @@ body {
     background-color: #2F263C;
     color: #ffcf5f;
     font-size: 24px;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 .titles {
+    font-family: 'Acme', sans-serif;
+}
+
+h1, h2, h3 {
     font-family: 'Acme', sans-serif;
 }
 
