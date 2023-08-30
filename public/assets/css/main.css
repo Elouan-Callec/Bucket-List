@@ -1,0 +1,64 @@
+body {
+    background-color: #2F263C;
+    color: #ffcf5f;
+    font-size: 24px;
+}
+
+.titles {
+    font-family: 'Acme', sans-serif;
+}
+
+header {
+    background-color: #ff3c3c;
+}
+
+.div-flex {
+    display: flex;
+    align-items: center;
+    margin-inline-start: 10%;
+}
+
+/**** Navbar ****/
+
+nav {
+    height: 8rem;
+    display: flex;
+    text-decoration: none;
+}
+
+.navTitle {
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 30px
+}
+
+.navList {
+    display: flex;
+    margin-left: 10%;
+}
+
+.navList li {
+    margin-right: 50px;
+    list-style: none;
+}
+
+.navList li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/**** Footer ****/
+
+.footerBar {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    bottom: 0;
+    position: absolute;
+    background-color: #201b29;
+    flex-direction: column;
+}
+
+.footerBar p {
+    margin: 16px;
+}
