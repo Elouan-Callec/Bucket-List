@@ -10,15 +10,18 @@
     <link rel="icon" href="{{ asset('assets/images/favicon.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Anton&family=Overpass:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Anton&family=Overpass:wght@100&display=swap"
+          rel="stylesheet">
 </head>
 <body>
 <header>
     {% include "menu/navbar.html.twig" %}
 </header>
-<main>
-    {% block body %}{% endblock %}
-</main>
+<div>
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+</div>
 <footer>
     {% include "menu/footer.html.twig" %}
 </footer>

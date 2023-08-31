@@ -3,22 +3,20 @@ body {
     color: #ffcf5f;
     font-size: 22px;
     font-family: 'Roboto Condensed', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-header {
-    background-color: #ff3c3c;
-}
-
-footer {
-    background-color: #201b29;
-    bottom: 0;
-    position: absolute;
-    width: 100%;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 main {
     margin: 3%;
     color: white;
+    min-height: 100vh;
 }
 
 .titles {
@@ -37,7 +35,12 @@ h1, h2, h3 {
     margin-inline-start: 10%;
 }
 
-/**** Navbar ****/
+
+/******************** Navbar ********************/
+
+header {
+    background-color: #ff3c3c;
+}
 
 nav {
     height: 6rem;
@@ -62,16 +65,17 @@ nav {
     list-style: none;
 }
 
-.navList li a {
-    text-decoration: none;
-    color: inherit;
-}
-
 .navList li a :hover {
     text-decoration: underline;
 }
 
-/**** Footer ****/
+
+/******************** Footer ********************/
+
+footer {
+    background-color: #201b29;
+    width: 100%;
+}
 
 .footerBar {
     display: flex;
