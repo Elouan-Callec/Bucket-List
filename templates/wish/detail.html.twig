@@ -3,6 +3,12 @@
 {% block title %}Wish Details{% endblock %}
 
 {% block body %}
-<p>The details of the wish {{ wish.title }}</p>
+    <h1>{{ wish.title }}</h1>
+    <div>
+        <p>Author : {{ wish.author }}</p>
+        <p>Description : {{ wish.description }}</p>
+        <p>Date Created : {{ wish.dateCreated | date }}</p>
+        <p>Date Updated : {{ wish.dateUpdated }}</p>
+    </div>
 {% endblock %}
 
