@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add You Wish{% endblock %}
+
+{% block body %}
+    <h1>Add your wish here !</h1>
+
+    {{ form_start(wishForm) }}
+    {{ form_widget(wishForm) }}
+    <button>+ Add</button>
+    {{ form_end(wishForm) }}
+{% endblock %}

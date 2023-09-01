@@ -8,7 +8,8 @@
         <p>Author : {{ wish.author }}</p>
         <p>Description : {{ wish.description }}</p>
         <p>Date Created : {{ wish.dateCreated | date }}</p>
-        <p>Date Updated : {{ wish.dateUpdated }}</p>
+        <p>Date Updated : {{ wish.dateUpdated | date }}</p>
     </div>
+    <a href="{{ path('wish_edit', {'id' : wish.id}) }}">Update</a>
 {% endblock %}
 

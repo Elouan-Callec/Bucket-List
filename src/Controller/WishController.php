@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Wish;
+use App\Form\WishType;
 use App\Repository\WishRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -37,20 +39,55 @@ class WishController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'new')]
-    public function new(EntityManagerInterface $entityManager): Response
+    #[Route('/add-wish', name: 'add-wish')]
+    public function add_wish(EntityManagerInterface $entityManager, Request $request): Response
     {
         $wish = new Wish();
-        $wish
-            ->setTitle("Make a lot of money")
-            ->setDescription("Make a lot of money quickly")
-            ->setAuthor("Elouan CALLEC")
-            ->setIsPublished(true)
-            ->setDateCreated(new \DateTime("now"));
+        $wishForm = $this->createForm(WishType::class, $wish);
 
-        $entityManager->persist($wish);
-        $entityManager->flush();
+        $wishForm->handleRequest($request);
 
-        return $this->render('wish/new.html.twig');
+        if ($wishForm->isSubmitted() && $wishForm->isValid()) {
+            $entityManager->persist($wish);
+            $entityManager->flush();
+
+            $this->addFlash("success", "Idea successfully added !");
+
+            return $this->redirectToRoute("wish_detail", ['wishId' => $wish->getId()]);
+        }
+
+        return $this->render('wish/add.html.twig', [
+            'wishForm' => $wishForm
+        ]);
+    }
+
+    #[Route('/edit/{id}', name: 'edit')]
+    public function edit(int $id, WishRepository $wishRepository, EntityManagerInterface $entityManager, Request $request): Response
+    {
+        $wish = $wishRepository->find($id);
+        $wishForm = $this->createForm(WishType::class, $wish);
+
+        $wishForm->handleRequest($request);
+
+        if ($wishForm->isSubmitted() && $wishForm->isValid()) {
+            $wish->setDateUpdated(new \DateTime('now'));
+
+            $entityManager->persist($wish);
+            $entityManager->flush();
+
+            $this->addFlash("success", "Idea successfully updated !");
+
+            return $this->redirectToRoute("wish_detail", ['wishId' => $wish->getId()]);
+        }
+
+        return $this->render('wish/edit.html.twig', [
+            'wishForm' => $wishForm
+        ]);
+    }
+
+    #[Route('/delete/{id}', name: 'delete')]
+    public function delete(): Response
+    {
+        return $this->render('wish/delete.html.twig');
     }
 }
