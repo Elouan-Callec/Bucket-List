@@ -30,7 +30,7 @@ class Wish
     private ?string $author = null;
 
     #[ORM\Column]
-    private ?bool $isPublished = false;
+    private ?bool $isPublished = true;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $dateCreated = null;
