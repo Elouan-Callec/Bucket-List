@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/wish', name: 'wish_')]
 class WishController extends AbstractController
@@ -47,6 +48,8 @@ class WishController extends AbstractController
         $wishForm->handleRequest($request);
 
         if ($wishForm->isSubmitted() && $wishForm->isValid()) {
+            $wish->setUser($this->getUser());
+
             $entityManager->persist($wish);
             $entityManager->flush();
 
@@ -60,10 +63,15 @@ class WishController extends AbstractController
         ]);
     }
 
-    #[Route('/edit/{id}', name: 'edit')]
+    #[Route('/edit/{id}', name: 'edit', requirements: ["id" => "\d+"])]
     public function edit(int $id, WishRepository $wishRepository, EntityManagerInterface $entityManager, Request $request): Response
     {
         $wish = $wishRepository->find($id);
+
+        if($wish->getUser() != $this->getUser()) {
+            throw $this->createAccessDeniedException("You can't edit this wish !");
+        }
+
         $wishForm = $this->createForm(WishType::class, $wish);
 
         $wishForm->handleRequest($request);
@@ -84,7 +92,7 @@ class WishController extends AbstractController
         ]);
     }
 
-    #[Route('/delete/{id}', name: 'delete')]
+    #[Route('/delete/{id}', name: 'delete', requirements: ["id" => "\d+"])]
     public function delete(): Response
     {
         return $this->render('wish/delete.html.twig');

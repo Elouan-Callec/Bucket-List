@@ -5,12 +5,20 @@
 {% block body %}
     <h1>{{ wish.title }}</h1>
     <div>
-        <p>Author : {{ wish.author }}</p>
+        <p>Author : {{ wish.user.username }}</p>
         <p>Description : {{ wish.description }}</p>
         <p>Date Created : {{ wish.dateCreated | date }}</p>
         <p>Date Updated : {{ wish.dateUpdated | date }}</p>
         <p>Category : {{ wish.category.name }}</p>
     </div>
-    <a href="{{ path('wish_edit', {'id' : wish.id}) }}">Update</a>
+
+    {% if app.user == wish.user %}
+        <a href="{{ path('wish_edit', {'id' : wish.id}) }}">Update</a>
+    {% endif %}
+    
+    {% if app.user == wish.user or is_granted('ROLE_ADMIN') %}
+        <a onclick="return confirm('Etes vous sûr de vouloir supprimer ce souhait {{ wish.title }} ?')"
+           href="{{ path('wish_delete', {'id' : wish.id}) }}">Delete</a>
+    {% endif %}
 {% endblock %}
 

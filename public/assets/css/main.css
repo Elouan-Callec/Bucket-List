@@ -32,7 +32,6 @@ h1, h2, h3 {
 .div-flex {
     display: flex;
     align-items: center;
-    margin-inline-start: 10%;
 }
 
 
@@ -46,6 +45,12 @@ nav {
     height: 6rem;
     display: flex;
     text-decoration: none;
+}
+
+.navContainer {
+    width: 100%;
+    margin: 0 10%;
+    justify-content: center
 }
 
 .navTitle {

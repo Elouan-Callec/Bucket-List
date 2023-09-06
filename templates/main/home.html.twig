@@ -3,6 +3,9 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-<h1>Welcome to Bucket List</h1>
+    {% if app.user %}
+        <p>Welcome {{ app.user.username }} !</p>
+    {% endif %}
+    <h1>Welcome to Bucket List</h1>
     <p>Welcome on Bucket List Website !</p>
 {% endblock %}

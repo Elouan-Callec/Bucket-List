@@ -1,13 +1,26 @@
 {% block navbar %}
     <nav>
-        <div class="div-flex titles">
-            <img src="{{ asset('assets/images/logo.svg') }}" style="width: 6%; cursor: pointer" alt="bucket-list logo" onclick="window.location.href = '{{ path('main_main') }}'">
+        <div class="div-flex titles navContainer">
+            <img src="{{ asset('assets/images/logo.svg') }}" style="width: 4%; cursor: pointer" alt="bucket-list logo"
+                 onclick="window.location.href = '{{ path('main_main') }}'">
             <p class="navTitle" onclick="window.location.href = '{{ path('main_main') }}'">Bucket-List</p>
+
             <ul style="" class="navList">
                 <li><a href="{{ path('main_main') }}">Home</a></li>
                 <li><a href="{{ path('main_about_us') }}">About Us</a></li>
                 <li><a href="{{ path('wish_list') }}">Wish List</a></li>
-                <li><a href="{{ path('wish_add-wish') }}">Add Your Wish</a></li>
+                {% if app.user %}
+                    <li><a href="{{ path('wish_add-wish') }}">Add Your Wish</a></li>
+                {% endif %}
+            </ul>
+
+            <ul class="navList">
+                {% if app.user %}
+                    <li><a href="{{ path('app_logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ path('app_login') }}">Login</a></li>
+                    <li><a href="{{ path('app_register') }}">Register</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
